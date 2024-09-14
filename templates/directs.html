@@ -1,0 +1,235 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'messages.css' %}">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="left-nav">
+            <h1 style="font-size: 30px; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Online</h1>
+        </div>
+        <form action="{% url 'searchuser' %}" method="POST">
+            {% csrf_token %}
+            <div class="searchbar">
+                <input type="text" placeholder="search" name="search">
+                <button type="submit"><i class="uil uil-search"></i></button>
+            </div>
+        </form>
+        <div class="right-nav">
+            <img src="{{user_profile.profileimg.url}}"> 
+        </div>
+    </nav>
+    <!----------------START NOTIFICATION POP UP------------- --> 
+    <div class="notification">
+        <div class="notification-sub">
+            <div class="profile-photo">
+                <img src="{% static 'member-1.png' %}">
+            </div>
+            <div class="notification-content">
+                <b>Rakesh Shrestha</b> started following you.
+                <p class="notification-time">2 HOURS AGO</p>
+            </div>
+        </div>
+        <div class="notification-sub">
+            <div class="profile-photo">
+                <img src="{% static 'member-2.png' %}">
+            </div>
+            <div class="notification-content">
+                <b>Shishir Basnet</b> liked your photo.
+                <p class="notification-time">2 HOURS AGO</p>
+            </div>
+        </div>
+        <div class="notification-sub">
+            <div class="profile-photo">
+                <img src="{% static 'member-3.png' %}">
+            </div>
+            <div class="notification-content">
+                <b>Niya Shrestha</b> started following you.
+                <p class="notification-time">2 HOURS AGO</p>
+            </div>
+        </div>
+        <div class="notification-sub">
+            <div class="profile-photo">
+                <img src="{% static 'member-4.png' %}">
+            </div>
+            <div class="notification-content">
+                <b>Prayag Maharjan</b> started following you.
+                <p class="notification-time">2 HOURS AGO</p>
+            </div>
+        </div>
+        <div class="notification-sub">
+            <div class="profile-photo">
+                <img src="{% static 'member-5.png' %}">
+            </div>
+            <div class="notification-content">
+                <b>Shweta Don</b> started following you.
+                <p class="notification-time">2 HOURS AGO</p>
+            </div>
+        </div>
+        <div class="notification-sub">
+            <div class="profile-photo">
+                <img src="{% static 'member-6.png' %}">
+            </div>
+            <div class="notification-content">
+                <b>Umesh Yadav</b> started following you.
+                <p class="notification-time">2 HOURS AGO</p>
+            </div>
+        </div>
+        <div class="notification-sub">
+            <div class="profile-photo">
+                <img src="{% static 'member-7.png' %}">
+            </div>
+            <div class="notification-content">
+                <b>Supreme Shah</b> started following you.
+                <p class="notification-time">2 HOURS AGO</p>
+            </div>
+        </div>
+    </div>
+    <!----------------END NOTIFICATION POP UP------------- -->
+
+    <main>
+        <div class="container">
+            <div class="left"> 
+                <!----------------START HANDLE------------- -->
+                <div class="profile">
+                    <a href="/profile/{{user.username}}">
+                        <div class="profile-photo">
+                            <img src="{{user_profile.profileimg.url}}">
+                        </div>
+                    <div class="handle">
+                        <h3>{{user.first_name}} {{user.last_name}}</h3>
+                        <p>@{{user.username}}</p>
+                    </div>
+                    </a>
+                </div>
+                <!----------------END HANDLE------------- -->
+                
+                <!----------------START SIDEBAR------------- -->
+                <div class="sidebar">
+                    <a href="/" class="item"><i class="uil uil-home"></i>Home</a>
+                    <a href="/explore" class="item"><i class="uil uil-compass"></i>Explore</a>
+                    <a class="item notify"><i class="uil uil-bell"></i>Notifications</a>
+                    <a href="/messages" class="item active"><i class="uil uil-envelope-alt"></i>Messages</a>
+                    <a href="/bookmark" class="item"><i class="uil uil-bookmark"></i>Bookmark</a>
+                    <a href="" class="item"><i class="uil uil-chart-line"></i>Saved Videos</a>
+                    <a class="item"><i class="uil uil-palette"></i>Theme</a>
+                    <a href="/settings" class="item"><i class="uil uil-setting"></i>Settings</a>
+                </div>  
+                <a href="logout"><button>Logout</button></a> 
+                <!----------------END SIDEBAR------------- -->
+            </div>
+
+            <div class="right">
+                <div class="messages">
+                    <div class="top">
+                        <p>Messages</p>
+                    </div>
+                    
+                    
+                    <div class="scroll">
+                        <div class="inbox">
+                            {% for message in messages %}
+                            <a href="{% url 'directs' message.user.username %}">
+                                <div class="inbox-element">
+                                    <div class="profile-photo">
+                                        <img src="{{message.user.profile.profileimg.url}}">
+                                    </div>
+                                    <h4>{{message.user.first_name}} {{message.user.last_name}} 
+                                        <p>@{{message.user.username}}</p>
+                                    </h4>
+                                </div>
+                            </a>
+                            {% endfor%}
+                        </div>
+                    </div>
+                </div>
+                <div class="conversation">
+                    <div class="header">
+                        <a href="/profile/{{user_object.username}}">
+                            <div class="convo-name">
+                                <img src="{{others_profile.profileimg.url}}">
+                                <h3>@{{user_object.username}}</h3>
+                            </div>
+                        </a>
+                        <div class="calls">
+                            <i class="uil uil-phone"></i>
+                            <i class="uil uil-video"></i>
+                            <i class="uil uil-info-circle"></i>
+                        </div>
+                    </div>
+                    <div class="convo-section chatappend">
+                        {% for direct in directs %}
+                            {% if direct.sender == request.user %}
+                                <div class="dm chat-message-right">
+                                    <img src="{{direct.user.profile.profileimg.url}}">
+                                    <p class="message-body">{{direct.body}} </p>
+                                </div>
+                            {% else %}
+                                <div class="dm">
+                                    <img src="{{direct.sender.profile.profileimg.url}}">
+                                    <p class="message-body">{{direct.body}}</p>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                        
+                    </div>
+                    <div class="type-space">
+                        <form action="{% url 'send-message' %}" method="POST" id="chat-form">
+                            {% csrf_token%}
+                            <div class="border">
+                                <i class="uil uil-microphone"></i>
+                                <i class="uil uil-image"></i>
+                                <input type="hidden" name="to_user" id="to_user" value="{{active_direct}}">
+                                <input type="text" placeholder="Message..." name="body" id="body">
+                                <button class="send_button" type="submit"><i class="uil uil-message"></i></button>
+                            </div>
+                        </form>
+                        <script type="text/javascript">
+                            $(document).on("submit", "#chat-form", function(e){
+                                e.preventDefault();
+                                let _body = $("#body").val()
+                                let _to_user = $("#to_user").val()
+
+                                $.ajax({
+                                    type: "POST",
+                                    url: "{% url 'send-message' %}",
+                                    data: {
+                                        body: _body,
+                                        to_user: _to_user,
+                                        csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val()
+                                    },
+                                    success: function (success) {
+                                        let _html = `
+                                            <div class="dm chat-message-right">
+                                                <img src="{{request.user.profile.profileimg.url}}">
+                                                <p class="message-body">${_body}</p>
+                                            </div>
+                                        `;
+                                        $(".chatappend").append(_html);
+                                    }
+                                })
+                                document.getElementById("body").value=""
+                            })
+
+                        </script>
+                    </div>
+                    
+                </div>
+
+            </div>
+
+
+
+
+        </div>
+    </main>
+
+    <script src="{% static 'messages.js' %}"></script>
+</body>
+</html>

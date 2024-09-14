@@ -1,0 +1,512 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'poppins', sans-serif;
+}
+body{
+    background-color: rgb(238, 237, 234);
+
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}
+/*---------------------START NAVBAR ---------------*/
+.navbar{
+    display: flex;
+    background-color: white;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.left-nav, .right-nav{
+    display:flex ;
+    margin: 5px 2%;
+    align-items: center;
+}
+.searchbar{
+    background-color: rgb(238, 237, 234);
+    border-radius: 25px;
+    display: flex;
+    width: 350px;
+    margin:10px 0;
+    align-items: center;
+}
+.uil-search{
+    font-size: 20px;
+    width: 30px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+.navbar .searchbar button{
+    border: none;
+}
+.searchbar input{
+    border: 0;
+    width: 100%;
+    outline: none;
+    background: transparent;
+    padding: 10px;
+}
+.right-nav img{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin: 0 5px;
+}
+.right-nav a input{
+    padding: 15px 25px;
+    background-color: blue;
+    color: white;
+    margin-right: 10px;
+    border-radius: 30px;
+    border: none;
+}
+.right-nav a{
+    cursor: pointer;
+}
+/*---------------------END NAVBAR ---------------*/
+
+
+/*---------------------MAIN ---------------*/
+.container{
+    display: flex;
+}
+.center{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+.left{
+    width:25%;
+    height:88vh;
+    position: sticky;
+    top: 70px;
+}
+.right{
+    width: 25%;
+    height: 88vh;
+    position: sticky;
+    top: 70px;
+}
+/*---------------------START HANDLE ---------------*/
+.profile{
+    margin: 15px 15px 15px 60px;
+    background-color: white;
+    border-radius: 20px;
+    display: flex;
+}
+.profile a{
+    display: flex;
+    margin: 15px;
+    text-decoration: none;
+    color: black;
+}
+.handle{
+    margin-left: 20px;
+}
+
+.profile-photo img{
+    width: 50px;
+    border-radius: 50%; 
+}
+
+/*---------------------END HANDLE ---------------*/
+
+/*---------------------START SIDEBAR ---------------*/
+.left .sidebar{
+    margin: 20px 15px 20px 60px;
+    background-color: white;
+    border-radius: 20px;
+    font-size: 1.4rem;
+}
+.sidebar a{
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    padding: 20px 0px ;
+    cursor: pointer;
+    transition: all 300ms ease;
+    color: black;
+    font-weight: bold;
+    position: relative;
+}
+.left .sidebar a:hover{
+    background: lightgray;
+}
+.left .sidebar a i{
+    padding-right: 30px;
+    margin-left: 2rem;
+
+    color: rgb(140, 139, 139);
+    font-size: 25px;
+}
+.left a button{
+    padding: 15px;
+    background-color: rgb(233, 22, 75);
+    margin: 0px 0 0 60px;
+    width: 80%;
+    height: 60px;
+    color: white;
+    border-radius: 20px;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.left .sidebar a.active{
+    background-color: rgb(238, 237, 234);
+    color: blue !important;
+    
+}
+.active::before{
+    content: '';
+    display: block;
+    width: 0.5rem;
+    height: 100%;
+    position: absolute;
+    background-color: blue;
+}
+.item:first-child.active{
+    border-top-left-radius: 20px;
+    overflow: hidden;
+}
+.item:last-child.active{
+    border-bottom-left-radius: 20px;
+    overflow: hidden;
+}
+/*---------------------END SIDEBAR---------------*/
+
+
+/*---------------------START STORY ---------------*/
+
+.center .stories{
+    display: flex;
+    margin: 15px;
+    height: 150px;
+    width: 80%;
+    gap: 10px;
+    align-self: center;
+    overflow: hidden;
+    
+}
+.center #right,#left{
+    position: absolute;
+    background-color: white;
+    font-size: 40px;
+    border-radius: 50%;
+    top: 37px;
+}
+.center #right{
+    right: 60px;
+}
+.center #left{
+    left:60px
+}
+
+.center .stories .story{
+    height: 120px;
+    position: relative;
+}
+.center .stories .story #addstoryicon{
+    font-size: 70px;
+    color: white;
+    background-color: transparent;
+    opacity: 300;
+    border-radius: 50%;
+    position: absolute;
+    bottom: 20px;
+    left: 18px;
+}
+.story-pic{
+    display: flex;
+    position: relative;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+    align-items: center;
+    background-color: black;
+    border: 2px solid orange;
+}
+.center .stories .story .story-pic img{
+    position: absolute;
+    width: 100px;
+}
+.center .stories .story p{
+    display: flex;
+    padding-top: 5px;
+    justify-content: center;
+}
+
+/*---------------------END STORY ---------------*/
+
+
+
+
+/*--------------------START FEED POST------------*/
+.postpost{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.post{
+    background-color: white;
+    border-radius: 20px;
+    margin: 15px;
+    width: 650px;
+}
+.post .details{
+    display: flex;
+    padding: 15px;
+}
+.post .details h3 a, .post .caption h4 a{
+    text-decoration: none;
+}
+.post .details button{
+    display: flex;
+    font-size: 30px;
+    padding-left: 60%;
+    align-items: center;
+    cursor: pointer;
+}
+.post .details button{
+    border: none;
+    background: none;
+}
+.post .details .profile-photo{
+    padding-right: 20px;
+}
+.post .details h3 p{
+    font-weight: normal;
+    color: gray;
+    font-size: 15px;
+    padding-top: 5px;
+}
+.post .posted-image img{
+    margin: 0 15px 15px 15px;
+    border-radius: 20px;
+    width: 96%;
+}
+.post .engagements{
+    display: flex;
+    margin-left: 40px;
+    font-size: 30px;
+    padding-bottom: 15px;
+    align-items: center;
+    gap: 30px;
+    height: 40px;
+}
+
+svg{
+    width: 30px;
+    padding-top: 5px;
+}
+.liked{
+    fill: red;
+
+}
+.bookmarked{
+    fill: rgb(15, 133, 243);
+}
+.post .likes{
+    margin: 0 15px 15px 15px;
+}
+.post .caption{
+    display: flex;
+    margin:0 0 15px 15px;
+    padding-bottom: 30px;
+}
+.post .caption p{
+    padding-left: 8px;
+}
+
+/*--------------------END FEED POST------------*/
+
+
+.notification{
+    background-color: white;
+    border-radius: 20px;
+    width: 400px;
+    height: 460px;
+    top: 330px;
+    left: 406px;
+    position: fixed;
+    box-shadow: 0 0 10px rgba(0,0,0,0.4);
+    z-index: 8;
+    display: none;
+}
+.notification-height{
+    max-height: 455px;
+}
+.notification .notification-sub{
+    display: flex;
+    margin: 10px;
+}
+.notification .notification-sub .profile-photo img{
+    padding-right: 10px;
+    border-radius: 50%;
+}
+.notification::before{
+    content: "";
+    width: 1.1rem;
+    height: 1.2rem;
+    display: block;
+    background-color: white;
+    position: absolute;
+    left: -0.5rem; 
+    top: 1rem;
+    transform: rotate(45deg);
+
+}
+/* -----------------------START POST PHOTO------------------------- */
+.post-photo{
+    position: fixed;
+    background-color: white;
+    border-radius: 20px;
+    width: 400px;
+    height: 455px;
+    top: 200px;
+    left: 620px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    z-index: 8;
+    display: none;
+    
+}
+.post-photo-height{
+    max-height: 455px;
+}
+.post-photo h2{
+    margin: 30px;
+    text-align: center;
+}
+.post-photo .upload{
+    margin: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+.post-photo .upload input[type="submit"]{
+    padding: 20px;
+    background-color: blue;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    font-size: 20px;
+    cursor: pointer;
+    margin-top: 65px;
+}
+.post-photo .upload textarea{
+    height: 60px;
+    width: 100%;
+    font-size: 15px;
+    resize: none;
+}
+.post-photo .upload h3{
+    padding-bottom: 10px;
+}
+/* -----------------------END POST PHOTO------------------------- */
+
+
+/* -------------------------START POST STORY---------------------- */
+
+.post-story{
+    position: fixed;
+    background-color: white;
+    border-radius: 20px;
+    width: 400px;
+    height: 300px;
+    top: 200px;
+    left: 620px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    z-index: 8;
+    display: none;
+}
+
+.post-story h2{
+    margin: 30px;
+    text-align: center;
+}
+.post-story .upload{
+    margin: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+.post-story .upload input[type="submit"]{
+    padding: 20px;
+    background-color: blue;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    font-size: 20px;
+    cursor: pointer;
+}
+.post-story .upload h3{
+    padding-bottom: 10px;
+}
+/* -------------------------END POST STORY---------------------- */
+/* -------------------------START DELETE POST----------------- */
+.delete-post{
+    position: fixed;
+    background-color: white;
+    border-radius: 20px;
+    width: 300px;
+    height: fit-content;
+    top: 200px;
+    left: 620px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    z-index: 8;
+    display: none;
+}
+
+.delete-post .contents a{
+    display: flex;
+    font-size: 20px;
+    padding: 10px 10px;
+    z-index: 10;
+    border-bottom: 1px solid gray;
+}
+.delete-post .contents a:hover{
+    background-color: lightgray;
+}
+.delete-post .contents a i{
+    padding-right: 10px;
+    color: rgb(140, 139, 139);
+}
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.75);
+    z-index: 1001; /* Increase the z-index value */
+    display: none;
+    pointer-events: none; /* Make the overlay non-interactive */
+  }
+  
+  .popup-overlay {
+    position: absolute;
+    top: 260px; /* Adjust the top value as per your popup position */
+    right: 570px; /* Adjust the right value as per your popup position */
+    width: 200px; /* Set the width of the popup */
+    height: fit-content; /* Set the height of the popup */
+    pointer-events: auto; /* Make the popup area interactive */
+  }
+/* -------------------------END DELETE POST----------------- */
+
+
+
+
+
+
+
+
+
+
+

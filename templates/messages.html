@@ -1,0 +1,201 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'messages.css' %}">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="left-nav">
+            <h1 style="font-size: 30px; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Online</h1>
+        </div>
+        <form action="{% url 'searchuser' %}" method="POST">
+            {% csrf_token %}
+            <div class="searchbar">
+                <input type="text" placeholder="search" name="search">
+                <button type="submit"><i class="uil uil-search"></i></button>
+            </div>
+        </form>
+        <div class="right-nav">
+            <img src="{{user_profile.profileimg.url}}"> 
+        </div>
+    </nav>
+    <!----------------START NOTIFICATION POP UP------------- --> 
+    <div class="notification">
+        <div class="notification-sub">
+            <div class="profile-photo">
+                <img src="{% static 'member-1.png' %}">
+            </div>
+            <div class="notification-content">
+                <b>Rakesh Shrestha</b> started following you.
+                <p class="notification-time">2 HOURS AGO</p>
+            </div>
+        </div>
+        <div class="notification-sub">
+            <div class="profile-photo">
+                <img src="{% static 'member-2.png' %}">
+            </div>
+            <div class="notification-content">
+                <b>Shishir Basnet</b> liked your photo.
+                <p class="notification-time">2 HOURS AGO</p>
+            </div>
+        </div>
+        <div class="notification-sub">
+            <div class="profile-photo">
+                <img src="{% static 'member-3.png' %}">
+            </div>
+            <div class="notification-content">
+                <b>Niya Shrestha</b> started following you.
+                <p class="notification-time">2 HOURS AGO</p>
+            </div>
+        </div>
+        <div class="notification-sub">
+            <div class="profile-photo">
+                <img src="{% static 'member-4.png' %}">
+            </div>
+            <div class="notification-content">
+                <b>Prayag Maharjan</b> started following you.
+                <p class="notification-time">2 HOURS AGO</p>
+            </div>
+        </div>
+        <div class="notification-sub">
+            <div class="profile-photo">
+                <img src="{% static 'member-5.png' %}">
+            </div>
+            <div class="notification-content">
+                <b>Shweta Don</b> started following you.
+                <p class="notification-time">2 HOURS AGO</p>
+            </div>
+        </div>
+        <div class="notification-sub">
+            <div class="profile-photo">
+                <img src="{% static 'member-6.png' %}">
+            </div>
+            <div class="notification-content">
+                <b>Umesh Yadav</b> started following you.
+                <p class="notification-time">2 HOURS AGO</p>
+            </div>
+        </div>
+        <div class="notification-sub">
+            <div class="profile-photo">
+                <img src="{% static 'member-7.png' %}">
+            </div>
+            <div class="notification-content">
+                <b>Supreme Shah</b> started following you.
+                <p class="notification-time">2 HOURS AGO</p>
+            </div>
+        </div>
+    </div>
+    <!----------------END NOTIFICATION POP UP------------- -->
+
+    <main>
+        <div class="container">
+            <div class="left"> 
+                <!----------------START HANDLE------------- -->
+                <div class="profile">
+                    <a href="/profile/{{user.username}}">
+                        <div class="profile-photo">
+                            <img src="{{user_profile.profileimg.url}}">
+                        </div>
+                    <div class="handle">
+                        <h3>{{user.first_name}} {{user.last_name}}</h3>
+                        <p>@{{user.username}}</p>
+                    </div>
+                    </a>
+                </div>
+                <!----------------END HANDLE------------- -->
+                
+                <!----------------START SIDEBAR------------- -->
+                <div class="sidebar">
+                    <a href="/" class="item"><i class="uil uil-home"></i>Home</a>
+                    <a href="explore" class="item"><i class="uil uil-compass"></i>Explore</a>
+                    <a class="item notify"><i class="uil uil-bell"></i>Notifications</a>
+                    <a href="messages" class="item active"><i class="uil uil-envelope-alt"></i>Messages</a>
+                    <a href="bookmark" class="item"><i class="uil uil-bookmark"></i>Bookmark</a>
+                    <a href="" class="item"><i class="uil uil-chart-line"></i>Saved Videos</a>
+                    <a class="item"><i class="uil uil-palette"></i>Theme</a>
+                    <a href="settings" class="item"><i class="uil uil-setting"></i>Settings</a>
+                </div>  
+                <a href="logout"><button>Logout</button></a> 
+                <!----------------END SIDEBAR------------- -->
+            </div>
+
+            <div class="right">
+                <div class="messages">
+                    <div class="top">
+                        <p>Messages</p>
+                    </div>
+                    
+                    <div class="scroll">
+                        <div class="inbox">
+                            {% for message in messages %}
+                            <a href="{% url 'directs' message.user.username %}">
+                                <div class="inbox-element">
+                                    <div class="profile-photo">
+                                        <img src="{{message.user.profile.profileimg.url}}">
+                                    </div>
+                                    <h4>{{message.user.first_name}} {{message.user.last_name}} 
+                                        <p>@{{message.user.username}}</p>
+                                    </h4>
+                                </div>
+                            </a>
+                            {% endfor%}
+                        </div>
+                    </div>
+                </div>
+                <div class="conversation">
+                    <!-- <div class="header">
+                        <div class="convo-name">
+                            <img src="{% static 'member-1.png'%}">
+                            <h3>{{user.username}}</h3>
+                        </div>
+                        <div class="calls">
+                            <i class="uil uil-phone"></i>
+                            <i class="uil uil-video"></i>
+                            <i class="uil uil-info-circle"></i>
+                        </div>
+                    </div>
+                    <div class="convo-section">
+                        {% for direct in directs %}
+                            {% if direct.user == request.user %}
+                                <div class="dm chat-message-right">
+                                    <img src="{{direct.user.profile.profileimg.url}}">
+                                    <p class="message-body">{{direct.body}} </p>
+                                    <p class="time">{{direct.date|date:"d M, Y"}}</p>
+                                </div>
+                            {% else %}
+                                <div class="dm">
+                                    <img src="{{direct.user.profile.profileimg.url}}">
+                                    <p class="message-body">{{direct.body}}</p>
+                                    <p class="time">{{direct.date|date:"d M, Y"}}</p>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                        
+                    </div>
+                    <div class="type-space">
+                        <div class="border">
+                            <i class="uil uil-grin"></i>
+                            <input type="text" placeholder="Message...">
+                            <i class="uil uil-microphone"></i>
+                            <i class="uil uil-image"></i>
+                        </div>
+                    </div> -->
+                    
+                </div>
+
+            </div>
+
+
+
+
+        </div>
+    </main>
+
+    <script src="{% static 'messages.js' %}"></script>
+</body>
+</html>

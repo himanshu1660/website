@@ -1,0 +1,474 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'poppins', sans-serif;
+}
+body{
+    background-color: rgb(238, 237, 234);
+
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+/*---------------------START NAVBAR ---------------*/
+.navbar{
+    display: flex;
+    background-color: white;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.left-nav, .right-nav{
+    display:flex ;
+    margin: 5px 2%;
+    align-items: center;
+}
+.searchbar{
+    background-color: rgb(238, 237, 234);
+    border-radius: 25px;
+    display: flex;
+    width: 350px;
+    margin:10px 0;
+    align-items: center;
+}
+.uil-search{
+    font-size: 20px;
+    width: 30px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+.navbar .searchbar button{
+    border: none;
+}
+.searchbar input{
+    border: 0;
+    width: 100%;
+    outline: none;
+    background: transparent;
+    padding: 10px;
+}
+.right-nav img{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin: 0 5px;
+    cursor: pointer;
+}
+.right-nav a input{
+    padding: 15px 25px;
+    background-color: rgb(9, 9, 170);
+    color: white;
+    margin-right: 10px;
+    border-radius: 30px;
+    border: none;
+}
+/*---------------------END NAVBAR ---------------*/
+
+
+/*---------------------MAIN ---------------*/
+.container{
+    display: flex;
+}
+.left{
+    width:25%;
+    height:88vh;
+    position: sticky;
+    top: 70px;
+}
+.right{
+    width: 75%;
+    height: 88vh;
+    position: sticky;
+    top: 70px;
+}
+/*---------------------START HANDLE ---------------*/
+.profile{
+    margin: 15px 15px 15px 60px;
+    background-color: white;
+    border-radius: 20px;
+    display: flex;
+}
+.profile a{
+    display: flex;
+    margin: 15px;
+    text-decoration: none;
+    color: black;
+}
+.handle{
+    margin-left: 20px;
+}
+
+.profile-photo img{
+    width: 50px;
+    border-radius: 50%;
+    
+}
+/*---------------------END HANDLE ---------------*/
+
+/*---------------------START SIDEBAR ---------------*/
+.left .sidebar{
+    margin: 20px 15px 20px 60px;
+    background-color: white;
+    border-radius: 20px;
+    font-size: 1.4rem;
+}
+.sidebar a{
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    padding: 20px 0px ;
+    cursor: pointer;
+    transition: all 300ms ease;
+    color: black;
+    font-weight: bold;
+    position: relative;
+}
+.left .sidebar a:hover{
+    background: lightgray;
+}
+.left .sidebar a i{
+    padding-right: 30px;
+    margin-left: 2rem;
+
+    color: rgb(140, 139, 139);
+    font-size: 25px;
+}
+.left a button{
+    padding: 15px;
+    background-color: rgb(233, 22, 75);
+    margin: 0px 0 0 60px;
+    width: 330px;
+    height: 60px;
+    color: white;
+    border-radius: 20px;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.left .sidebar a.active{
+    background-color: rgb(238, 237, 234);
+    color: blue !important;
+    
+}
+.active::before{
+    content: '';
+    display: block;
+    width: 0.5rem;
+    height: 100%;
+    position: absolute;
+    background-color: blue;
+}
+.item:first-child.active{
+    border-top-left-radius: 20px;
+    overflow: hidden;
+}
+.item:last-child.active{
+    border-bottom-left-radius: 20px;
+    overflow: hidden;
+}
+/*---------------------END SIDEBAR---------------*/
+
+/*---------------------START NOTIFICATION POPUP---------------*/
+.notification{
+    background-color: white;
+    border-radius: 20px;
+    width: 400px;
+    height: 460px;
+    top: 330px;
+    left: 406px;
+    position: fixed;
+    box-shadow: 0 0 10px rgba(0,0,0,0.4);
+    z-index: 8;
+    display: none;
+}
+.notification-height{
+    max-height: 455px;
+}
+.notification .notification-sub{
+    display: flex;
+    margin: 10px;
+}
+.notification .notification-sub .profile-photo img{
+    padding-right: 10px;
+    border-radius: 50%;
+}
+.notification::before{
+    content: "";
+    width: 1.1rem;
+    height: 1.2rem;
+    display: block;
+    background-color: white;
+    position: absolute;
+    left: -0.5rem;
+    top: 1rem;
+    transform: rotate(45deg);
+}
+/*---------------------END NOTIFICATION POPUP---------------*/
+
+/*---------------------END LEFT---------------*/
+/*---------------------END LEFT---------------*/
+/*---------------------END LEFT---------------*/
+/*---------------------END LEFT---------------*/
+/*---------------------END LEFT---------------*/
+
+/* -----------------------START PROFILE----------------------- */
+.container .right .start{
+    background-color: white;
+    border-radius: 20px;
+    margin: 15px;
+    overflow-y: scroll;
+    height: 88.5vh;
+    position: relative;
+}
+.container .right .start .notposts{
+    display: flex;
+    border-bottom: 2px solid gray;
+}
+.container .right .start .notposts .profilephoto{
+    margin: 20px;
+}
+.container .right .start .notposts .profilephoto img{
+    width: 200px;
+    border-radius: 50%;
+}
+.container .right .start .notposts .right-profile{
+    margin: 30px;
+}
+.container .right .start .notposts .right-profile .top{
+    display: flex;
+    gap: 20px;
+}
+
+.container .right .start .notposts .right-profile .top a button{
+    padding:10px 30px;
+    background-color: blue;
+    color: white;
+    border-radius: 30px;
+    border: none;
+}
+.container .right .start .notposts .right-profile .middle{
+    margin: 10px 0;
+    display: flex;
+    gap: 40px;
+}
+.container .right .start .notposts .right-profile .middle .followers_number, .followings_number{
+    cursor: pointer;
+}
+.container .right .start .notposts .right-profile .bottom p{
+    margin-top: 5px;
+}
+/* -----------------------END PROFILE----------------------- */
+
+/* -----------------------START POSTS----------------------- */
+.post{
+    background-color: white;
+    border-radius: 20px;
+    margin: 15px;
+    width: 650px;
+}
+.post .details{
+    display: flex;
+    padding: 15px;
+}
+.post .details .uil{
+    font-size: 30px;
+    padding-left: 50%;
+}
+.post .details .profile-photo{
+    padding-right: 20px;
+}
+.post .details h3 p{
+    font-weight: normal;
+    color: gray;
+    font-size: 15px;
+    padding-top: 5px;
+}
+.post .posted-image img{
+    margin: 0 15px 15px 15px;
+    border-radius: 20px;
+    width: 96%;
+}
+.post .engagements{
+    display: flex;
+    margin-left: 40px;
+    font-size: 30px;
+    padding-bottom: 15px;
+    align-items: center;
+    gap: 30px;
+    height: 40px;
+}
+
+svg{
+    width: 30px;
+    padding-top: 5px;
+}
+.liked{
+    fill: red;
+}
+.bookmarked{
+    fill: rgb(15, 133, 243);
+}
+.post .likes{
+    margin: 0 15px 15px 15px;
+}
+.post .caption{
+    display: flex;
+    margin:0 0 15px 15px;
+    padding-bottom: 30px;
+}
+.post .caption p{
+    padding-left: 8px;
+}
+
+/* ---------------------START FOLLOWERS/FOLLOWING------------------ */
+
+.followers{
+    position: fixed;
+    background-color: white;
+    border-radius: 20px;
+    width: 400px;
+    height: 600px;
+    top: 100px;
+    left: 620px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    z-index: 8;
+}
+.followers .followers-heading{
+    display: flex;
+    gap: 80px;
+    justify-content: center;
+    margin: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid gray;
+}
+
+.followers .followers-list{
+    margin: 15px;
+    height: 500px; /* Adjust the height based on your other content */
+    overflow-y: auto; /* Set overflow to auto */
+    border-radius: 20px;
+}
+.followers .followers-list::-webkit-scrollbar {
+    width: 8px;
+}
+
+.followers .followers-list::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+}
+
+.followers .followers-list::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 4px;
+}
+
+.followers .followers-list::-webkit-scrollbar-thumb:hover {
+    background-color: #555;
+}
+.followers .followers-list a{
+    text-decoration: none;
+    color: black;
+}
+.followers .followers-list a .inbox-element:hover{
+    background-color: lightgray;
+}
+.followers .followers-list a .inbox-element {
+    display: flex;
+    padding: 10px;
+    border-radius: 20px;
+}
+
+.followers .followers-list a .inbox-element h4 {
+    font-weight: bold;
+    padding-left: 20px;
+}
+
+.followers .followers-list a .inbox-element h4 p {
+    font-weight: normal;
+    padding-top: 3px;
+}
+
+.followers .followers-list:last-child {
+    padding-bottom: 20px;
+}
+
+/* ----------------FOLLOWINGG------------------ */
+.following{
+    position: fixed;
+    background-color: white;
+    border-radius: 20px;
+    width: 400px;
+    height: 600px;
+    top: 100px;
+    left: 620px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    z-index: 8;
+}
+.following .following-heading{
+    display: flex;
+    gap: 80px;
+    justify-content: center;
+    margin: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid gray;
+}
+
+.following .following-list{
+    margin: 15px;
+    height: 500px; /* Adjust the height based on your other content */
+    overflow-y: auto; /* Set overflow to auto */
+    border-radius: 20px;
+}
+.following .following-list::-webkit-scrollbar {
+    width: 8px;
+}
+
+.following .following-list::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+}
+
+.following .following-list::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 4px;
+}
+
+.following .following-list::-webkit-scrollbar-thumb:hover {
+    background-color: #555;
+}
+.following .following-list a{
+    text-decoration: none;
+    color: black;
+}
+.following .following-list a .inbox-element:hover{
+    background-color: lightgray;
+}
+.following .following-list a .inbox-element {
+    display: flex;
+    padding: 10px;
+    border-radius: 20px;
+}
+
+.following .following-list a .inbox-element h4 {
+    font-weight: bold;
+    padding-left: 20px;
+}
+
+.following .following-list a .inbox-element h4 p {
+    font-weight: normal;
+    padding-top: 3px;
+}
+
+.following .following-list:last-child {
+    padding-bottom: 20px;
+}
+.followers{
+    display: none;
+}
+.following{
+    display:none;
+}
+
+/* ---------------------END FOLLOWERS/FOLLOWING------------------ */

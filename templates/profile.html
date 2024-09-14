@@ -1,0 +1,268 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'profile.css' %}">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+    <script src="{% static 'engagements.js' %}"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="left-nav">
+            <h1 style="font-size: 30px; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Online</h1>
+        </div>
+        <form action="{% url 'searchuser' %}" method="POST">
+            {% csrf_token %}
+            <div class="searchbar">
+                <input type="text" placeholder="search" name="search">
+                <button type="submit"><i class="uil uil-search"></i></button>
+            </div>
+        </form>
+        <div class="right-nav">
+            <img src="{{user_profile.profileimg.url}}"> 
+        </div>
+    </nav>
+    <!----------------START NOTIFICATION POP UP------------- --> 
+    <div class="notification">
+        <div class="notification-sub">
+            <div class="profile-photo">
+                <img src="{% static 'member-1.png' %}">
+            </div>
+            <div class="notification-content">
+                <b>Rakesh Shrestha</b> started following you.
+                <p class="notification-time">2 HOURS AGO</p>
+            </div>
+        </div>
+        <div class="notification-sub">
+            <div class="profile-photo">
+                <img src="{% static 'member-2.png' %}">
+            </div>
+            <div class="notification-content">
+                <b>Shishir Basnet</b> liked your photo.
+                <p class="notification-time">2 HOURS AGO</p>
+            </div>
+        </div>
+        <div class="notification-sub">
+            <div class="profile-photo">
+                <img src="{% static 'member-3.png' %}">
+            </div>
+            <div class="notification-content">
+                <b>Niya Shrestha</b> started following you.
+                <p class="notification-time">2 HOURS AGO</p>
+            </div>
+        </div>
+        <div class="notification-sub">
+            <div class="profile-photo">
+                <img src="{% static 'member-4.png' %}">
+            </div>
+            <div class="notification-content">
+                <b>Prayag Maharjan</b> started following you.
+                <p class="notification-time">2 HOURS AGO</p>
+            </div>
+        </div>
+        <div class="notification-sub">
+            <div class="profile-photo">
+                <img src="{% static 'member-5.png' %}">
+            </div>
+            <div class="notification-content">
+                <b>Shweta Don</b> started following you.
+                <p class="notification-time">2 HOURS AGO</p>
+            </div>
+        </div>
+        <div class="notification-sub">
+            <div class="profile-photo">
+                <img src="{% static 'member-6.png' %}">
+            </div>
+            <div class="notification-content">
+                <b>Umesh Yadav</b> started following you.
+                <p class="notification-time">2 HOURS AGO</p>
+            </div>
+        </div>
+        <div class="notification-sub">
+            <div class="profile-photo">
+                <img src="{% static 'member-7.png' %}">
+            </div>
+            <div class="notification-content">
+                <b>Supreme Shah</b> started following you.
+                <p class="notification-time">2 HOURS AGO</p>
+            </div>
+        </div>
+    </div>
+    <!----------------END NOTIFICATION POP UP------------- -->
+
+    <!-- ---------------START FOLLOWERS/FOLLOWING---------------------- -->
+
+    <div class="followers">
+        <div class="followers-heading">
+            <h3>Followers</h3>
+        </div>
+        <div class="followers-list">
+            {% for follower in followers %}
+            <a href="/profile/{{follower.username}}">
+                <div class="inbox-element">
+                    <div class="profile-photo">
+                        <img src="{{follower.profile.profileimg.url}}">
+                    </div>
+                    <h4>{{follower.first_name}} {{follower.last_name}} 
+                        <p>@{{follower.username}}</p>
+                    </h4>
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="following">
+        <div class="following-heading">
+            <h3 id="followings">Following</h3>
+        </div>
+        <div class="following-list">
+            {% for following in followings %}
+            <a href="/profile/{{following.username}}">
+                <div class="inbox-element">
+                    <div class="profile-photo">
+                        <img src="{{following.profile.profileimg.url}}">
+                    </div>
+                    <h4>{{following.first_name}} {{following.last_name}} 
+                        <p>@{{following.username}}</p>
+                    </h4>
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+    </div> 
+
+   
+
+    <!-- ---------------END FOLLOWERS/FOLLOWING---------------------- -->
+    <main>
+        <div class="container">
+            <div class="left"> 
+                <!----------------START HANDLE------------- -->
+                <div class="profile">
+                    <a href="/profile/{{user.username}}">
+                        <div class="profile-photo">
+                            <img src="{{user_profile.profileimg.url}}">
+                        </div>
+                    <div class="handle">
+                        <h3>{{user.first_name}} {{user.last_name}}</h3>
+                        <p>@{{user.username}}</p>
+                    </div>
+                    </a>
+                </div>
+                <!----------------END HANDLE------------- -->
+                
+                <!----------------START SIDEBAR------------- -->
+                <div class="sidebar">
+                    <a href="/" class="item"><i class="uil uil-home"></i>Home</a>
+                    <a href="/explore" class="item"><i class="uil uil-compass"></i>Explore</a>
+                    <a class="item notify"><i class="uil uil-bell"></i>Notifications</a>
+                    <a href="/messages" class="item"><i class="uil uil-envelope-alt"></i>Messages</a>
+                    <a href="/bookmark" class="item"><i class="uil uil-bookmark"></i>Bookmark</a>
+                    <a href="" class="item"><i class="uil uil-chart-line"></i>Saved Videos</a>
+                    <a class="item"><i class="uil uil-palette"></i>Theme</a>
+                    <a href="/settings" class="item"><i class="uil uil-setting"></i>Settings</a>
+                </div>  
+                <a href="logout"><button>Logout</button></a> 
+                <!----------------END SIDEBAR------------- -->
+            </div>
+
+
+            <!-- ---------------------START RIGHT-------------------- -->
+            <div class="right">
+                <div class="start">
+                    
+                    <div class="notposts">
+                        <div class="profilephoto">
+                            <img src="{{others_profile.profileimg.url}}" >
+                        </div>
+                        <div class="right-profile">
+                            <div class="top">
+                                <h1>{{user_object.first_name}} {{user_object.last_name}}</h1>
+                                {% if user_object.username == user.username %}
+                                <a href="/settings"><button class="follow_botton">Edit Profile</button></a>
+                                {% else %}
+                                <a href="/follow?user={{user_object.username}}"><button class="follow_botton">{{button_text}}</button></a>
+                                <a href="{% url 'new-message' user_object.username %}"><button class="follow_botton message">Message</button></a>
+                                {% endif %}
+                            </div>
+                            <div class="middle">
+                                <h3>Posts <p>{{no_of_posts}}</p></h3>
+                                <h3 class="followers_number">Followers <p>{{user_followers}}</p></h3>
+                                <h3 class="followings_number">Following <p>{{user_following}}</p></h3>
+                            </div>
+                            <div class="bottom">
+                                <h3>@{{user_object.username}}</h3>
+                                <p>{{others_profile.bio}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-------------------START POSTSS--------------------->
+                    <div class="postpost">
+                        
+                        {% for post in user_posts reversed %}
+                        <div class="post">
+                            <div class="details">
+                                <div class="profile-photo">
+                                    <img src="{{others_profile.profileimg.url}}">
+                                </div>
+                                <h3>{{user_object.username}}<p>{{others_profile.location}} {{post.created_at}}</p></h3>
+                                {% if post.user == user.username %}
+                                <i class="uil uil-ellipsis-h"></i>
+                                {% endif %}
+                            </div>
+                            <div class="posted-image">
+                                <img src="{{post.image.url}}">
+                            </div>
+                            <div class="engagements">
+                                <a href="/like_post?post_id={{ post.id }}" id="likeButton">
+                                    {% if post.id|stringformat:"s" in like_filter %}
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="liked" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" width="100px" height="100px">
+                                            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                                        </svg>
+                                    {% else %}
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" width="100px" height="100px">
+                                            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                                        </svg>
+                                    {% endif %}
+                                </a>
+                                <a href=""><i class="uil uil-comment-dots"></i></a>
+                                <a href=""><i class="uil uil-share-alt"></i></a>
+                                <a href="/bookmark_it?post_id={{ post.id }}" id="bookmarkButton">
+                                    {% if post.id|stringformat:"s" in bookmark_filter %}
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="bookmarked" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" width="100px" height="100px">
+                                            <path d="M5 3v18l7-3 7 3V3H5z"/>
+                                        </svg>
+                                    {% else %}
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" width="100px" height="100px">
+                                            <path d="M5 3v18l7-3 7 3V3H5z"/>
+                                        </svg>
+                                    {% endif %}
+                                </a>
+                            </div>
+                            <div class="likes">
+                                <p>{{post.no_of_likes}} Likes</p>
+                            </div>
+                            <div class="caption">
+                                <h4>{{user_object.username}}</h4>
+                                <p>{{post.caption}}</p>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <!-------------------END POSTSS---------------------> 
+
+                </div>
+            </div>
+
+            
+
+
+        </div>
+    </main>
+<script src="{% static 'profile.js' %}"></script>
+</body>
+</html>
